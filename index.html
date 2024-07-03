@@ -1,0 +1,62 @@
+
+<! --use this to stream the game engine data to a web server -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My First Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This is my first website.">
+  <style>
+    #updateButton {
+        width: 150px;
+        height: 50px;
+        font-size: 16px;
+      }
+      #imageContainer {
+        margin-top: 20px;
+      }
+  </style>
+</head>
+<body>
+    <h1>My First Website</h1>  
+    <button id="updateButton">Click me</button>
+    <p id="display">Button clicked 0 times</p> 
+    <p id="rotationDisplay">number of KuruKuru 0</p>
+
+    <div id="imageContainer">
+        <img id="displayImage" src="images/00001.bmp" alt="My Image" width="300" height="200">        
+    </div> 
+  <script>
+    var clickCount = 0;
+    var rotationCount = 0;
+
+    var button = document.getElementById("updateButton");
+    var display = document.getElementById("display");
+    var displayImage = document.getElementById("displayImage");
+    var rotationDisplay = document.getElementById("rotationDisplay");
+
+    // List of BMP image URLs
+    var images = [
+      "images/00001.bmp",
+      "images/00002.bmp",
+      "images/00003.bmp",
+      "images/00004.bmp",
+      "images/00005.bmp",
+      "images/00006.bmp",
+    ];
+
+    // Add a click event listener to the button
+    button.addEventListener("click", function() {
+        clickCount++;
+        if (clickCount % images.length == 0) {
+          rotationCount++;
+        }        
+        display.textContent = "Button clicked " + clickCount + " times"; 
+        rotationDisplay.textContent = "Number of KuruKuru: " + rotationCount;               
+        var imageIndex = clickCount % images.length;
+        displayImage.src = images[imageIndex];
+    });
+  </script>
+</body>
+</html>
