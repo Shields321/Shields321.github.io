@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AES Implementation Explanation">
+  <title>AES Implementation Explanation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #007BFF;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    nav {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #555;
+      border-radius: 5px;
+    }
+    nav a:hover {
+      background-color: #007BFF;
+    }
+    .content {
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h2 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>AES Implementation Explanation</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>   
+    <a href="Resume.html">Resume</a>    
+  </nav>
+
+    <div class="content">
+        <h2>Overview of the AES Algorithm</h2>
+        <p>AES (Advanced Encryption Standard) is a symmetric encryption algorithm widely used to secure data. In this implementation, we focus on using a 128-bit key for encryption and decryption. Below is an explanation of the AES algorithm, broken down into its key steps:</p>
+        
+        <h3>1. Key Expansion</h3>
+        <p>The first step in the AES algorithm is key expansion. The original 128-bit key is expanded into an array of key schedule words, which are used in later rounds. This key schedule contains multiple 32-bit words derived from the original key, ensuring the key material varies across the encryption rounds. The expansion uses a process of rotating the key and applying the Rijndael S-box to generate new key material.</p>
+
+        <h3>2. Initial Round - AddRoundKey</h3>
+        <p>The initial round begins by XORing the plaintext block with the first 128-bit round key derived from the key expansion. This step is called the <strong>AddRoundKey</strong> operation. It ensures that the input data is mixed with the key material before proceeding to the main rounds.</p>
+
+        <h3>3. Main Rounds - SubBytes, ShiftRows, MixColumns, AddRoundKey</h3>
+        <p>AES uses several operations in its main rounds. These rounds are repeated multiple times (10 rounds for AES-128). The operations are as follows:</p>
+        <ul>
+            <li><strong>SubBytes</strong>: This step substitutes each byte in the state matrix with its corresponding value from the S-box. The S-box is a pre-defined substitution table that provides non-linearity in the encryption process.</li>
+            <li><strong>ShiftRows</strong>: The rows of the state matrix are shifted cyclically. The first row remains unchanged, the second row is shifted by one byte, the third row by two bytes, and the fourth row by three bytes.</li>
+            <li><strong>MixColumns</strong>: This operation mixes the data in each column of the state matrix. It applies a matrix multiplication in the finite field to provide diffusion, ensuring that the output of each column depends on the entire input block.</li>
+            <li><strong>AddRoundKey</strong>: After performing the SubBytes, ShiftRows, and MixColumns steps, the current state is XORed with the next round key from the key schedule.</li>
+        </ul>
+
+        <h3>4. Final Round - SubBytes, ShiftRows, AddRoundKey</h3>
+        <p>The final round is similar to the main rounds, except it does not include the MixColumns step. It consists of:</p>
+        <ul>
+            <li><strong>SubBytes</strong>: As before, each byte in the state matrix is substituted using the S-box.</li>
+            <li><strong>ShiftRows</strong>: The rows of the state matrix are again shifted cyclically.</li>
+            <li><strong>AddRoundKey</strong>: Finally, the last round key is XORed with the state matrix, completing the encryption process.</li>
+        </ul>
+
+        <h3>5. Output the Ciphertext</h3>
+        <p>After the final round, the state matrix is now the ciphertext, which is output as the result of the AES encryption process. The ciphertext is the encrypted version of the original plaintext.</p>
+
+        <h3>Decryption</h3>
+        <p>Decryption is the reverse of the encryption process. It uses the same steps but in reverse order, with inverse operations for each step (e.g., InverseSubBytes, InverseShiftRows, and InverseMixColumns). The round keys are also applied in reverse order, starting from the last key in the key schedule.</p>
+    </div>
+
+
+  <footer>
+    <p>Last updated: December 2024</p>
+  </footer>
+
+</body>
+</html>

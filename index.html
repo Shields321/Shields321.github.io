@@ -1,42 +1,122 @@
-
-<! --use this to stream the game engine data to a web server -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My First Website</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="This is my first website.">
+  <meta name="description" content="Professional Home Page">
+  <title>Alessio Barranca - Personal Website</title>
   <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin: 10px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
     #updateButton {
-        width: 150px;
-        height: 50px;
-        font-size: 16px;
-      }
-      #imageContainer {
-        margin-top: 20px;
-      }
+      display: inline-block;
+    }
+    #Resume {
+      display: inline-block;
+    }
+    #AESExplanation {
+      display: inline-block;
+    }
+    #imageContainer {
+      margin-top: 20px;
+      text-align: center;
+    }
+    #displayImage {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .info p {
+      font-size: 18px;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 5px 0;
+      font-size: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-    <h1>My First Website</h1>  
-    <button id="updateButton">Click me</button>
+  <header>
+    <h1>Welcome to My Website</h1>
+  </header>
+
+  <div class="container">
+    <div class="info">
+      <button id="updateButton">Click me</button>
+      <button id="Resume">Go to Resume</button>
+      <button id="AESExplanation">Learn about AES Implementation</button>
+    </div>
+    
     <p id="display">Button clicked 0 times</p> 
-    <p id="rotationDisplay">number of KuruKuru 0</p>
+    <p id="rotationDisplay">Number of KuruKuru: 0</p>
 
     <div id="imageContainer">
-        <img id="displayImage" src="images/00001.bmp" alt="My Image" width="300" height="200">        
-    </div> 
+      <img id="displayImage" src="images/00001.bmp" alt="Profile Image">
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 Alessio Barranca. All rights reserved.</p>
+  </footer>
+
   <script>
     var clickCount = 0;
     var rotationCount = 0;
 
     var button = document.getElementById("updateButton");
+    var resume = document.getElementById("Resume");
+    var AESExplanation = document.getElementById("AESExplanation");
     var display = document.getElementById("display");
     var displayImage = document.getElementById("displayImage");
     var rotationDisplay = document.getElementById("rotationDisplay");
 
-    // List of BMP image URLs
+    // List of BMP images
     var images = [
       "images/00001.bmp",
       "images/00002.bmp",
@@ -46,7 +126,16 @@
       "images/00006.bmp",
     ];
 
-    // Add a click event listener to the button
+    // Link to resume page
+    resume.addEventListener("click", function() {
+      window.location.href = "resume.html";
+    });
+
+    // Link to AES explanation page
+    AESExplanation.addEventListener("click", function() {
+      window.location.href = "aes.html";
+    });
+
     button.addEventListener("click", function() {
         clickCount++;
         if (clickCount % images.length == 0) {

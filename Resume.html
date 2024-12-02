@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alessio Barranca - Resume">
+  <title>Alessio Barranca - Resume</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      height: 100vh; /* Make the body take full height */
+    }
+
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+    nav {
+        text-align: center;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        background-color: #555;
+        border-radius: 5px;
+      }
+      nav a:hover {
+        background-color: #007BFF;
+      }
+
+    .container {
+      flex-grow: 1; /* Allow container to take the remaining space */
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    embed {
+      width: 100%;
+      height: calc(100vh - 120px); /* Full height minus header and footer */
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Alessio Barranca - Resume</h1>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="aes.html">AES Explanation</a>
+  </nav>
+  <div class="container">
+    <!-- Embed the PDF resume -->
+    <embed src="Alessio Barranca Resume.pdf" type="application/pdf">
+  </div>
+
+  <footer>
+    <p>Last updated: December 2024</p>
+  </footer>
+
+</body>
+</html>
